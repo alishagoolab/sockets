@@ -10,8 +10,10 @@ public class Client {
     byte[] receivedata = new byte[1024];
     DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
     System.out.print("Enter text: "); //match this with GUI
-    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-    String input = in.readLine();
+    BufferedReader in = new BufferedReader(new InputStreamReader(System.in)); 
+    String input = in.readLine();//Get user input
+    System.out.println("Message to be sent: "+input); //match with GUI
+
 
 
   }
