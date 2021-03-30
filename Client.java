@@ -8,7 +8,7 @@ public class Client {
     int port = 5298; 
     byte[] senddata = new byte[1024];
     byte[] receivedata = new byte[1024];
-    
+    DatagramSocket clientsocket = new DatagramSocket(); //This constructor binds the DatagramSocket to any available local port.
 
 
   }
