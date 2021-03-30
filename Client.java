@@ -7,7 +7,7 @@ public class Client {
     InetAddress ip = InetAddress.getLocalHost(); // Get IP address, can get from args instead. 
     int port = 5298; //set port for packet
     byte[] sendmessage = new byte[1024];
-    byte[] receivemessage = new byte[1024];
+    
     DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
     System.out.print("Enter text: "); //match this with GUI
     BufferedReader in = new BufferedReader(new InputStreamReader(System.in)); 
@@ -15,8 +15,14 @@ public class Client {
     System.out.println("Output message: "+input); //match with GUI
     sendmessage = input.getBytes(); //Convert message string to bytes
     DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, 1234);
-        clientsocket.send(sendpacket);
+    clientsocket.send(sendpacket);
 
+    byte[] receivemessage = new byte[1024];
+    DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
+        clientsocket.receive(receivepacket);
+        String text = new String(receivepacket.getData());
+        System.out.println("Client input: "+ text);
+        clientsocket.close();
 
 
 
