@@ -8,24 +8,31 @@ public class Client {
     int port = 5298; //set port for packet
     byte[] sendmessage = new byte[1024];
     
-    DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
-    System.out.print("Enter text: "); //match this with GUI
-    BufferedReader in = new BufferedReader(new InputStreamReader(System.in)); 
-    String input = in.readLine();//Get user input
-    System.out.println("Output message: "+input); //match with GUI
-    sendmessage = input.getBytes(); //Convert message string to bytes
-    DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, 1234);
-    clientsocket.send(sendpacket);
+    try {
+      DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
+      System.out.print("Enter text: "); //match this with GUI
+      BufferedReader in = new BufferedReader(new InputStreamReader(System.in)); 
+      String input = in.readLine();//Get user input
+      System.out.println("Output message: "+input); //match with GUI
+      sendmessage = input.getBytes(); //Convert message string to bytes
+      DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, 1234);
+      clientsocket.send(sendpacket);
 
-    byte[] receivemessage = new byte[1024];
-    DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
-        clientsocket.receive(receivepacket);
-        String text = new String(receivepacket.getData());
-        System.out.println("Client input: "+ text);
-        clientsocket.close();
-
-
-
-
+      byte[] receivemessage = new byte[1024];
+      DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
+      clientsocket.receive(receivepacket);
+      String text = new String(receivepacket.getData());
+      System.out.println("Client input: "+ text);
+      clientsocket.close();
+    }
+    catch (SocketTimeoutException ex) {
+            System.out.println("Timeout error: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println("Client error: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
   }
 }
