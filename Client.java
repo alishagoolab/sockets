@@ -8,7 +8,7 @@ public class Client {
     int port = 5298; //set port for packet
     byte[] sendmessage = new byte[1024];
     byte[] receivemessage = new byte[1024];
-    
+
     try {
       //Add threading here when scaling
       DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
@@ -32,8 +32,6 @@ public class Client {
             ex.printStackTrace();
         } catch (IOException ex) {
             System.out.println("Client error: " + ex.getMessage());
-            ex.printStackTrace();
-        } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
   }
