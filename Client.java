@@ -17,7 +17,7 @@ public class Client {
       String input = in.readLine();//Get user input
       System.out.println("Output message: "+input); //match with GUI
       sendmessage = input.getBytes(); //Convert message string to bytes
-      //Checksum here
+      //Checksum origin here
       DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, sendport); 
       clientsocket.send(sendpacket);
 
@@ -25,6 +25,7 @@ public class Client {
       DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
       clientsocket.receive(receivepacket);
       String text = new String(receivepacket.getData());
+      //Checksum result here
       System.out.println("Received Message: "+ text);
       clientsocket.close();
     }
