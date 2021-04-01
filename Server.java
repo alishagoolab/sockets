@@ -15,4 +15,6 @@ public class Server {
             String input = new String(fromClient.getData());
             InetAddress ip = fromClient.getAddress();
             int port = fromClient.getPort(); 
+            System.out.println("Server input: "+input);
+      }
 

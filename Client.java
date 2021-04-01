@@ -20,7 +20,7 @@ public class Client {
         //Checksum origin here
         DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, sendport); 
         clientsocket.send(sendpacket);
-
+ 
         byte[] receivemessage = new byte[1024];
         DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
         clientsocket.receive(receivepacket);
