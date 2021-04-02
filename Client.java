@@ -1,5 +1,7 @@
 /**
  * The class Client sets up a network client for sending chat messages using the UDP protocol. 
+ * A datagram socket is bound to an available port to receive messages through. 
+ * Another socket is bound to the Server class's listening port to send messages to. 
  * @author RNGTAM002, RJKRAH001, GLBALI002
  */
 
