@@ -1,3 +1,8 @@
+/**
+ * The class Server sets up a network host for sending chat messages using the UDP protocol. 
+ * @author RNGTAM002, RJKRAH001, GLBALI002
+ */
+
 import java.net.*;
 import java.util.*;
 import java.io.*;
@@ -16,5 +21,6 @@ public class Server {
             InetAddress ip = fromClient.getAddress();
             int port = fromClient.getPort(); 
             System.out.println("Server input: "+input);
+            
       }
 

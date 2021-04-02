@@ -1,3 +1,8 @@
+/**
+ * The class Client sets up a network client for sending chat messages using the UDP protocol. 
+ * @author RNGTAM002, RJKRAH001, GLBALI002
+ */
+
 import java.net.*;
 import java.io.*;
 import java.util.*;
@@ -9,7 +14,7 @@ public class Client {
     int sendport = 5298; //set destination port
 
     try {
-      DatagramSocket clientsocket = new DatagramSocket(); //Binds the DatagramSocket to any available local port.
+      DatagramSocket clientsocket = new DatagramSocket(); //Binds DatagramSocket to any available local port.
       while(true){
         byte[] sendmessage = new byte[1024];
         System.out.print("Enter text: "); //match this with GUI
@@ -28,7 +33,7 @@ public class Client {
         //Checksum result here
         System.out.println("Received Message: "+ text);
         clientsocket.close();
-        Thread.sleep(10000);
+        Thread.sleep(10000); //
       }
     }
     catch (SocketTimeoutException ex) {
