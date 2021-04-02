@@ -25,6 +25,13 @@ public class Server {
             System.out.println("Server input: "+input);
 
             String output = ""; 
+
+            //Get output from user2
+
+            sendmessage = output.getBytes();
+            System.out.println("Server output: "+output);
+            DatagramPacket toClient = new DatagramPacket(sendmessage, sendmessage.length, ip, port);
+            serversocket.send(toClient);
             
       }
     }
