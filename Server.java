@@ -30,7 +30,8 @@ public class Server {
 
             sendmessage = output.getBytes();
             System.out.println("Server output: "+output);
-            
+            DatagramPacket toClient = new DatagramPacket(sendmessage, sendmessage.length, ip, port);
+            serversocket.send(toClient); 
             
       }
     }
