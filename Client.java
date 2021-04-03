@@ -14,7 +14,7 @@ import java.util.zip.Adler32;
 
 public class Client {
   public static void main(String[] args) throws Exception {
-    long sentChecksum;
+    long sendChecksum;
     InetAddress ip = InetAddress.getLocalHost(); // Get IP address, can get from args instead. 
     
     int sendport = 5298; //set destination port
@@ -28,12 +28,13 @@ public class Client {
         String input = in.readLine();//Get user input
         System.out.println("Sent: "+ input); //match with GUI
         sendmessage = input.getBytes(); //Convert message string to bytes
+
         ByteArrayInputStream bais = new ByteArrayInputStream(sendmessage);
         CheckedInputStream cis = new CheckedInputStream(bais, new Adler32());
         byte readBuffer[] = new byte[10];
         while (cis.read(readBuffer) >= 0){
-          sentChecksum = cis.getChecksum().getValue();
-          System.out.println("The value of checksum is " + sentChecksum);
+          sendChecksum = cis.getChecksum().getValue();
+          System.out.println("The value of checksum is " + sendChecksum);
         }
         DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, sendport); 
         clientsocket.send(sendpacket);
