@@ -8,6 +8,9 @@
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import java.util.zip.CheckedInputStream;
+import java.util.zip.Adler32;
+
 
 public class Client {
   public static void main(String[] args) throws Exception {
@@ -24,7 +27,13 @@ public class Client {
         String input = in.readLine();//Get user input
         System.out.println("Output message: "+input); //match with GUI
         sendmessage = input.getBytes(); //Convert message string to bytes
-        //Checksum origin here
+        ByteArrayInputStream bais = new ByteArrayInputStream(sendmessage);
+        CheckedInputStream cis = new CheckedInputStream(bais, new Adler32());
+        byte readBuffer[] = new byte[5];
+        while (cis.read(readBuffer) >= 0){
+          long value = cis.getChecksum().getValue();
+          System.out.println("The value of checksum is " + value);
+        }
         DatagramPacket sendpacket = new DatagramPacket(sendmessage, sendmessage.length, ip, sendport); 
         clientsocket.send(sendpacket);
  
@@ -35,7 +44,7 @@ public class Client {
         //Checksum result here
         System.out.println("Received Message: "+ message);
         //clientsocket.close();
-        Thread.sleep(10000); //
+        Thread.sleep(10000); 
       }
     }
     catch (SocketTimeoutException ex) {
