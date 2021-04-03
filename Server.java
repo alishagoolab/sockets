@@ -2,7 +2,9 @@
  * The class Server sets up a network host for sending chat messages using the UDP protocol. 
  * The class sets up a port to listen for incoming datagram packets which contain the messages.
  * It sends and receives the datagram packets through datagram sockets.
- * @author RNGTAM002, RJKRAH001, GLBALI002.
+ * @author RNGTAM002.
+ * @author RJKRAH001
+ * @author GLBALI002.
  */
 
 import java.net.*;
