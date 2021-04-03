@@ -22,11 +22,11 @@ public class Server {
             String input = new String(fromClient.getData());
             InetAddress ip = fromClient.getAddress();
             int port = fromClient.getPort(); 
-            System.out.println("Server input: "+input);
+            System.out.println("Received: "+ input);
 
-            String output = ""; 
-
-            //Get output from user2
+            BufferedReader out = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter reply: ");
+            String output = out.readLine(); //Get user message to send. 
 
             sendmessage = output.getBytes();
             System.out.println("Server output: "+output);

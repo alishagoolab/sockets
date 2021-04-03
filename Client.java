@@ -31,10 +31,10 @@ public class Client {
         byte[] receivemessage = new byte[1024];
         DatagramPacket receivepacket = new DatagramPacket(receivemessage, receivemessage.length);
         clientsocket.receive(receivepacket);
-        String text = new String(receivepacket.getData());
+        String message = new String(receivepacket.getData());
         //Checksum result here
-        System.out.println("Received Message: "+ text);
-        clientsocket.close();
+        System.out.println("Received Message: "+ message);
+        //clientsocket.close();
         Thread.sleep(10000); //
       }
     }
