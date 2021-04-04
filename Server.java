@@ -9,7 +9,6 @@
 import java.net.*;
 import java.io.*;
 import java.util.*;
-import java.lang.*;
 import java.util.zip.Adler32;
 import java.util.zip.CheckedInputStream;
 
@@ -24,6 +23,7 @@ public class Server {
             DatagramPacket fromClient = new DatagramPacket(receivemessage, receivemessage.length);
             serversocket.receive(fromClient);
             String input = new String(fromClient.getData());
+            
             InetAddress ip = fromClient.getAddress();
             int port = fromClient.getPort(); 
             System.out.println("Received: "+ input);

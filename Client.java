@@ -7,7 +7,6 @@
 
 import java.net.*;
 import java.io.*;
-import java.lang.*;
 import java.util.*;
 import java.util.zip.CheckedInputStream;
 import java.util.zip.Adler32;
