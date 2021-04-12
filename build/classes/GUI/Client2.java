@@ -3,6 +3,7 @@
  * The class sets up a datagram socket to send and receive datagram packets through. 
  * It calculates a checksum on the output message and on input data and displays it for data integrity validation.
  * @author RNGTAM002, GBLALI002, RJKRAH001.
+ * @date 1st April 2021.
  */
 
 import java.net.*;
